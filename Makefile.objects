@@ -1,0 +1,8 @@
+shm_table.lo: /home/valera/Develop/C/php_shm_table/shm_table.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/valera/Develop/C/php_shm_table $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/valera/Develop/C/php_shm_table/shm_table.c -o shm_table.lo 
+$(phplibdir)/shm_table.la: ./shm_table.la
+	$(LIBTOOL) --mode=install cp ./shm_table.la $(phplibdir)
+
+./shm_table.la: $(shared_objects_shm_table) $(SHM_TABLE_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_shm_table) $(SHM_TABLE_SHARED_LIBADD)
+
